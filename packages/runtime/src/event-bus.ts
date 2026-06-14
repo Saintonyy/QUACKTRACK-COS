@@ -1,4 +1,4 @@
-import { validateEventEnvelope, type EventEnvelope } from '@quacktrack/events';
+import { validateEventEnvelope, type EventEnvelope, type EventValidationError } from '@quacktrack/events';
 import type { EventDispatchResult, EventHandler, EventMiddleware } from './types';
 
 export class EventBus {
@@ -57,7 +57,7 @@ export class EventBus {
         accepted: false,
         rejected: true,
         eventId: event.id,
-        validationErrors: validation.errors
+        validationErrors: validation.errors as unknown as EventValidationError[]
       };
     }
 
