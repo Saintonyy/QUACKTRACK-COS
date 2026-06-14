@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUACKTRACK COS - Simulator & Broadcast Canvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div id="app-container">
+    <!-- Left Panel: Operator Console -->
+    <div id="operator-console">
+      <header class="deck-header">
+        <div class="logo-area">
+          <span class="logo-title">QUACKTRACK</span>
+          <span class="logo-sub">OPERATOR CONSOLE v1.0</span>
+        </div>
+        <div class="status-indicator">
+          <span class="status-dot" id="system-status-dot"></span>
+          <span id="system-status-text">BOOTING</span>
+        </div>
+      </header>
+
+      <div class="deck-scroll-container">
+        <!-- Section: Queue Status Deck (System Bar) -->
+        <section class="deck-section">
+          <h3>SYSTEM BAR</h3>
+          <div class="health-grid">
+            <div class="health-item">
+              <span class="health-label">Active Graphic</span>
+              <span class="health-val" id="status-active-graphic">None</span>
+            </div>
+            <div class="health-item">
+              <span class="health-label">Next Item</span>
+              <span class="health-val" id="status-next-item">None</span>
+            </div>
+            <div class="health-item">
+              <span class="health-label">Queue Length</span>
+              <span class="health-val" id="status-queue-length">0</span>
+            </div>
+            <div class="health-item">
+              <span class="health-label">Scene</span>
+              <span class="health-val" id="status-active-scene">live_game</span>
+            </div>
+            <div class="health-item" style="grid-column: span 2;">
+              <span class="health-label">Health</span>
+              <span class="health-val healthy" id="status-health">healthy</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Scene Control Deck -->
+        <section class="deck-section">
+          <h3>SCENE CONTROL DECK</h3>
+          <div class="trigger-buttons">
+            <button class="btn btn-primary" id="btn-scene-live">
+              <span class="btn-icon">📺</span> LIVE Game
+            </button>
+            <button class="btn btn-primary" id="btn-scene-replay">
+              <span class="btn-icon">🔄</span> REPLAY
+            </button>
+          </div>
+          <div style="margin-top: 5px;">
+            <button class="btn btn-secondary" id="btn-scene-touchdown-seq" style="width: 100%; border-color: var(--color-signal-yellow); color: var(--color-white);">
+              <span class="btn-icon">🏈</span> Run Touchdown Replay Sequence
+            </button>
+          </div>
+        </section>
+
+        <!-- Section: Tabbed Graphics Panel -->
+        <section class="deck-section">
+          <h3>GRAPHICS PANEL</h3>
+          <div class="console-tabs">
+            <button class="tab-btn active" data-tab="tab-player">PLAYER</button>
+            <button class="tab-btn" data-tab="tab-stat">STAT</button>
+            <button class="tab-btn" data-tab="tab-sponsor">SPONSOR</button>
+            <button class="tab-btn" data-tab="tab-breaking">BREAKING</button>
+          </div>
+
+          <div class="tab-content-container">
+            <!-- Player Tab -->
+            <div class="tab-pane active" id="tab-player">
+              <div class="input-group">
+                <label for="input-player-name">Player Name</label>
+                <input type="text" id="input-player-name" value="Donald 'Quack' Miller">
+              </div>
+              <div class="input-row" style="margin-top: 8px;">
+                <div class="input-group">
+                  <label for="input-player-number">Number</label>
+                  <input type="text" id="input-player-number" value="07">
+                </div>
+                <div class="input-group">
+                  <label for="input-player-position">Position</label>
+                  <input type="text" id="input-player-position" value="Point Guard">
+                </div>
+              </div>
+              <div class="tab-action-row" style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button class="btn btn-primary btn-show-now" id="btn-player-show-now">⚡ Show Now</button>
+                <button class="btn btn-secondary btn-queue" id="btn-player-queue">📥 Queue</button>
+              </div>
+            </div>
+
+            <!-- Stat Tab -->
+            <div class="tab-pane" id="tab-stat">
+              <div class="input-group">
+                <label for="input-stat-name">Player Name</label>
+                <input type="text" id="input-stat-name" value="Donald 'Quack' Miller">
+              </div>
+              <div class="input-row" style="margin-top: 8px;">
+                <div class="input-group">
+                  <label for="input-stat-label">Stat Label</label>
+                  <input type="text" id="input-stat-label" value="Points Per Game">
+                </div>
+                <div class="input-group">
+                  <label for="input-stat-value">Stat Value</label>
+                  <input type="text" id="input-stat-value" value="28.4">
+                </div>
+              </div>
+              <div class="tab-action-row" style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button class="btn btn-primary btn-show-now" id="btn-stat-show-now">⚡ Show Now</button>
+                <button class="btn btn-secondary btn-queue" id="btn-stat-queue">📥 Queue</button>
+              </div>
+            </div>
+
+            <!-- Sponsor Tab -->
+            <div class="tab-pane" id="tab-sponsor">
+              <div class="input-group">
+                <label for="input-sponsor-name">Sponsor Name</label>
+                <input type="text" id="input-sponsor-name" value="AFLAC INSURANCE">
+              </div>
+              <div class="tab-action-row" style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button class="btn btn-primary btn-show-now" id="btn-sponsor-show-now">⚡ Show Now</button>
+                <button class="btn btn-secondary btn-queue" id="btn-sponsor-queue">📥 Queue</button>
+              </div>
+            </div>
+
+            <!-- Breaking Tab -->
+            <div class="tab-pane" id="tab-breaking">
+              <div class="input-group">
+                <label for="input-breaking-text">Headline</label>
+                <input type="text" id="input-breaking-text" value="QUACK CONTINUES STREAK WITH 3RD CONSECUTIVE TRIPLE-DOUBLE">
+              </div>
+              <div class="tab-action-row" style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button class="btn btn-primary btn-show-now" id="btn-breaking-show-now">⚡ Show Now</button>
+                <button class="btn btn-secondary btn-queue" id="btn-breaking-queue">📥 Queue</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Queue Status Deck -->
+        <section class="deck-section">
+          <h3>QUEUE STATUS DECK</h3>
+          <div class="queue-list-container" id="queue-list-items" style="background: var(--color-graphite-dark); border: 1px solid var(--color-steel-border); border-radius: 4px; padding: 10px; min-height: 80px; font-size: 11px; max-height: 150px; overflow-y: auto;">
+            <div class="queue-placeholder" style="color: var(--color-steel-text); text-align: center; margin-top: 20px;">Queue is empty.</div>
+          </div>
+          <div class="trigger-buttons secondary-buttons">
+            <button class="btn btn-primary" id="btn-queue-next" style="grid-column: span 2;">
+              <span class="btn-icon">⏭️</span> Next Item
+            </button>
+            <button class="btn btn-secondary" id="btn-operator-hide">
+              <span class="btn-icon">❌</span> COS Hide
+            </button>
+            <button class="btn btn-danger" id="btn-operator-clear">
+              <span class="btn-icon">⚠️</span> Clear
+            </button>
+          </div>
+        </section>
+
+        <!-- Section: Live Log -->
+        <section class="deck-section">
+          <h3>OPERATIONAL LOG</h3>
+          <div class="log-panel" id="deck-log">
+            <div class="log-line system">[SYSTEM] Console initialized. Ready.</div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Right Panel: Scaled Broadcast Output Viewport -->
+    <div id="program-canvas-wrapper">
+      <div class="canvas-header">
+        <span>BROADCAST OUTPUT CANVAS (1920x1080)</span>
+        <span class="canvas-scale-indicator" id="scale-indicator">SCALE: 100%</span>
+      </div>
+      <div id="program-canvas">
+        <!-- Rendered layers are absolute children here -->
+        <div id="stinger-wipe"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

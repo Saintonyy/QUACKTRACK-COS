@@ -1,0 +1,15 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/core" },
+    { "path": "./packages/events" },
+    { "path": "./packages/objects" },
+    { "path": "./packages/sponsor-policy" },
+    { "path": "./packages/registry" },
+    { "path": "./packages/layout" },
+    { "path": "./packages/queue" },
+    { "path": "./packages/analytics" },
+    { "path": "./packages/renderer" },
+    { "path": "./packages/runtime" }
+  ]
+}

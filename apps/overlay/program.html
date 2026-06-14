@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUACKTRACK COS - Clean Broadcast Output</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: transparent !important;
+    }
+    #program-canvas {
+      width: 1920px;
+      height: 1080px;
+      background: transparent !important;
+      border: none !important;
+      left: 0 !important;
+      top: 0 !important;
+      transform: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="program-canvas">
+    <div id="stinger-wipe"></div>
+  </div>
+  <script type="module" src="/src/program-main.ts"></script>
+</body>
+</html>

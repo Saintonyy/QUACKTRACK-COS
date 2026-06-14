@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "references": [
+    { "path": "../core" },
+    { "path": "../events" },
+    { "path": "../objects" },
+    { "path": "../sponsor-policy" },
+    { "path": "../registry" },
+    { "path": "../layout" },
+    { "path": "../queue" },
+    { "path": "../renderer" },
+    { "path": "../analytics" }
+  ],
+  "include": ["src"]
+}

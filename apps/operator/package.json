@@ -1,0 +1,16 @@
+{
+  "name": "@quacktrack/operator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@quacktrack/core": "workspace:*",
+    "@quacktrack/events": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "quacktrack-cos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "corepack pnpm --filter \"./packages/**\" build",
+    "typecheck": "tsc -b tsconfig.packages.json",
+    "test": "vitest run",
+    "validate:configs": "vitest run configs/config-validation.test.ts",
+    "test:watch": "vitest",
+    "clean": "corepack pnpm --filter \"./packages/**\" clean"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8",
+    "zod": "^3.24.1"
+  }
+}
