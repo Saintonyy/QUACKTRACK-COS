@@ -1,14 +1,14 @@
+import { z } from 'zod';
+
 import {
-  ISODateTimeSchema,
   broadcastObjectIdSchema,
   correlationIdSchema,
   durationMsSchema,
   eventIdSchema,
+  ISODateTimeSchema,
   operatorIdSchema,
   validateWithSchema
-} from '@quacktrack/core';
-import { z } from 'zod';
-
+} from '../../core/src';
 import {
   EVENT_NAMESPACES,
   EVENT_SOURCES,
@@ -177,4 +177,6 @@ function sortObject(value: unknown): unknown {
   }
 
   return value;
+
+
 }
